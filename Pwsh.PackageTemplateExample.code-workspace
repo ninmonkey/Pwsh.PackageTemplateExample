@@ -1,0 +1,396 @@
+{
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        "files.exclude": {
+            "**/.git": true,
+            "**/.svn": true,
+            "**/.hg": true,
+            "**/CVS": true,
+            "**/Output": true,
+            "**/Output/*": true,
+            "**/Output": true,
+            "**/.DS_Store": true,
+            "**/Thumbs.db": true,
+        },
+        "search.exclude": {
+            "**/node_modules": true,
+            "**/Output": true,
+            "**/bower_components": true,
+            "**/*.code-search": true
+        },
+        "files.watcherExclude": {
+            "**/.git/objects/**": true,
+            "**/.git/subtree-cache/**": true,
+            "**/node_modules/*/**": true,
+            "**/.hg/store/**": true
+        },
+        //-------- PowerShell Configuration --------
+        // Use a custom PowerShell Script Analyzer settings file for this workspace.
+        // Relative paths for this setting are always relative to the workspace root dir.
+        // Specifies the path to a PowerShell Script Analyzer settings file. To override the default settings for all projects, enter an absolute path, or enter a path relative to your workspace.
+        // use: <file:///C:/Users/cppmo_000/skydrive/Documents/2021/dotfiles_git/powershell/PSScriptAnalyzerSettings.psd1>
+        "powershell.scriptAnalysis.settingsPath": "C:/Users/cppmo_000/skydrive/Documents/2021/dotfiles_git/powershell/PSScriptAnalyzerSettings.psd1",
+        // "powershell.scriptAnalysis.settingsPath": "PSScriptAnalyzerSettings.psd1",
+        "powershell.scriptAnalysis.enable": true,
+        "powershell.scriptAnalysis.settingsPath": "ScriptAnalyzerSettings.psd1",
+        "powershell.codeFormatting.openBraceOnSameLine": true,
+        "powershell.codeFormatting.newLineAfterCloseBrace": true,
+        // "powershell.notebooks.saveMarkdownCellsAs": "LineComment",
+        // "powershell.codeFormatting.ignoreOneLineBlock": true,
+        "powershell.codeFormatting.autoCorrectAliases": true,
+        "powershell.codeFormatting.useConstantStrings": true,
+        "powershell.codeFormatting.useCorrectCasing": true,
+        "powershell.codeFormatting.whitespaceAroundPipe": true,
+        "powershell.codeFormatting.whitespaceBetweenParameters": false,
+        "powershell.integratedConsole.suppressStartupBanner": true,
+        // "powershell.notebooks.saveMarkdownCellsAs": "BlockComment",
+        // "powershell.notebooks.showToggleButton": true,
+        // "powershell.powerShellDefaultVersion": "pwsh",
+        // "powershell.powerShellDefaultVersion": "",
+        "powershell.codeFormatting.alignPropertyValuePairs": true,
+        "powershell.codeFormatting.newLineAfterOpenBrace": false,
+        "powershell.promptToUpdatePowerShell": false,
+        "workbench.commandPalette.preserveInput": true,
+        "powershell.codeFormatting.addWhitespaceAroundPipe": true,
+        "powershell.codeFormatting.trimWhitespaceAroundPipe": true,
+        "powershell.codeFormatting.whitespaceAfterSeparator": true,
+        "powershell.codeFormatting.whitespaceAroundOperator": true,
+        "powershell.codeFormatting.whitespaceBeforeOpenBrace": true,
+        "powershell.codeFormatting.whitespaceBeforeOpenParen": true,
+        "powershell.codeFormatting.whitespaceInsideBrace": true,
+        "pester.autoRunOnSave": false,
+        "editor.suggest.showStatusBar": true,
+        /*
+
+    ### Sect: vscode-icons
+
+           tags: Addon, Icons
+
+    */
+        "vsicons.associations.files": [
+            // justin grote's config: <https://discord.com/channels/180528040881815552/447476910499299358/801102446209794088>
+            {
+                "extensions": [
+                    "arm.json"
+                ],
+                "format": "svg",
+                "icon": "azure"
+            },
+            {
+                "icon": "text", // or any other icon from vscode-icons
+                "extensions": [
+                    "ans",
+                    "ansi"
+                ],
+                "format": "svg"
+            },
+            {
+                "extensions": [
+                    "parameters.json"
+                ],
+                "format": "svg",
+                "icon": "config"
+            },
+            {
+                "extensions": [
+                    "tests.ps1"
+                ],
+                "format": "svg",
+                "icon": "test"
+            },
+            {
+                "extensions": [
+                    "clixml"
+                ],
+                "format": "svg",
+                "icon": "xml"
+            }
+        ],
+        "vsicons.associations.folders": [
+            {
+                "extends": "dist",
+                "extensions": [
+                    "BuildOutput",
+                    "Output"
+                ],
+                "format": "svg",
+                "icon": "dist"
+            },
+            {
+                "extends": "helper",
+                "extensions": [
+                    "BuildHelpers"
+                ],
+                "format": "svg",
+                "icon": "helper"
+            }
+        ],
+        "explorer.fileNesting.expand": true,
+        "explorer.fileNesting.patterns": {
+            // "*.🐒.log": "${capture}.log", // this is the inverse of what I want
+            /*
+        Parent values are the first part of the patterns
+
+
+        ex1:
+            foo.ps1
+                foo.tests.ps1
+
+
+        "*.ps1": "${capture}.tests.ps1",
+
+
+        */
+            // "*.ps1": "${capture}.tests.ps1",
+            /*
+
+
+        ex2:
+            foo.ps.psm1
+                foo.psm1
+                foo.ps.psd1
+
+        */
+            "*.ps.md": "${capture}.md", // [style2] for PipeScript as the parent
+            "*.ps.ps1": "${capture}.ps1",
+            "*.ps.psm1": "${capture}.psd1,${capture}.psm1",
+            "*.PSSVG.ps1": "${capture}.svg",
+            // "*.ps.psm1": "${capture}.psm1",
+            // "*.tests.ps1": "${capture}.ps1",
+            // "*.ps.": "${capture}.tests.ps1",
+            // "*.md": "${capture}.ps.md",
+            // "*.ps.md": "${capture}.ps.md",
+            // "*.ps1": "${capture}.tests.ps1",
+            /*
+
+
+
+
+        */
+            // "*.ps.${capture}": ""
+            /*
+
+
+        ex3:
+            foo.ps1
+                foo.tests.ps1
+
+        */
+            /*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        if you want to have
+
+            Foo.ps1
+                Foo.psx.ps1
+        */
+            // "*.ps1": "${capture}.psx.ps1",
+            /*
+        if you want to have
+            Foo.ps1
+                Foo.psx.ps1
+
+        For cases when a .ps1 / .psx.ps1 do *not* have
+        a matching pair, then stay visible as normal
+        */
+            /*
+        "*.psx.ps1": "${capture}.ps1",
+        "*.ts": "${capture}.js",
+        "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
+        "*.jsx": "${capture}.js",
+        "*.tsx": "${capture}.ts",
+        "tsconfig.json": "tsconfig.*.json",
+        "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml",
+        */
+            /*
+
+        was
+
+        */
+            // PS on the outside
+            // "*.ps1": "${capture}.ps.ps1",
+            // "*.md": "${capture}.ps.md",
+            // "*.psm1": "${capture}.ps.psm1",
+            // or PS on the inside
+            // "*.ps.ps1": "${capture}.ps1",
+            /*
+
+        was
+
+        */
+            // "explorer.fileNesting.patterns": {
+            // "*pq.log": "${capture}*.log",
+            // "*.log": "${capture}-parsed.log",
+            // sub-log-split
+            // "*.ts": "${capture}.js",
+            // "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
+            // "*.jsx": "${capture}.js",
+            // "*.tsx": "${capture}.ts",
+            // "tsconfig.json": "tsconfig.*.json",
+            // "package.json": "package-lock.json, yarn.lock"
+            // },
+        },
+        /*
+
+    for pipescript
+
+    */
+        // "explorer.fileNesting.enabled": true,
+        // "explorer.fileNesting.expand": false,
+        // "explorer.fileNesting.patterns": {
+        /*
+        if you want to have
+
+            Foo.ps1
+                Foo.psx.ps1
+    */
+        // "*.ps1": "${capture}.psx.ps1",
+        /*
+        if you want to have
+
+            Foo.ps1
+                Foo.psx.ps1
+        */
+        // "*psx.ps1": "${capture}.ps1",
+        // },
+        /*
+
+
+    */
+        /*
+
+    begin: Justin grote's config
+
+     */
+        "errorLens.errorBackground": "#e4545410",
+        "errorLens.errorForeground": "#ff646440",
+        "errorLens.errorMessageBackground": "#e4545405",
+        "errorLens.warningBackground": "#ff942f10",
+        "errorLens.warningForeground": "#fa973a70",
+        "errorLens.warningMessageBackground": "#fff00005",
+        /*
+
+    end: Justin grote's config
+
+     */
+        /*
+     final debug for testing
+     */
+        "scm.diffDecorationsGutterPattern": {
+            "added": false,
+            "modified": false,
+        },
+        "scm.diffDecorationsIgnoreTrimWhitespace": "false",
+        "scm.diffDecorations": "all",
+        "scm.diffDecorationsIgnoreTrimWhitespace": "true",
+        "scm.diffDecorations": "none",
+        // "editor.inlineSuggest.mode": "subwordSmart",
+        "[powershell]": {
+            "editor.suggest.showInlineDetails": true,
+            "editor.suggest.preview": true,
+            "editor.suggest.showSnippets": false,
+            "editor.snippetSuggestions": "bottom",
+            "editor.suggest.filterGraceful": true,
+            "editor.suggest.insertMode": "insert",
+        },
+        // default squiggle
+        // "editorWarning.foreground": "#00fff2", // main squiggle : different hue
+        "workbench.colorCustomizations": {
+            // hiding squiggles,  last 2 digits are alpha.
+            // RRGGBBAA
+            "editorWarning.foreground": "#00fff200", // squiggle: gone
+            "editorWarning.foreground": "#00fff2", // squiggle : 100%
+            "editorWarning.foreground": "#00fff25c", // squiggle : 30%
+            "editorWarning.foreground": "#00fff200", // squiggle: gone
+        },
+        "workbench.colorCustomizations": {
+            // "new", old colors
+            "errorLens.warningMessageBackground": "#fff00005",
+            "errorLens.warningBackground": "#ff942f10",
+            "errorLens.errorForeground": "#f77777",
+            "errorLens.errorMessageBackground": "#e4545405",
+            "errorLens.errorBackground": "#e454540a",
+            "errorLens.warningForeground": "#fa973a70",
+            "errorLens.infoForeground": "#ea00ff",
+            "minimap.findMatchHighlight": "#1ef029",
+            "minimap.warningHighlight": "#ee6f8a6b",
+            "minimap.foregroundOpacity": "#ff000081",
+            "minimap.selectionHighlight": "#264f78",
+            "minimap.selectionOccurrenceHighlight": "#feef2e",
+            "minimap.unicodeHighlight": "#d18616",
+            "minimapGutter.addedBackground": "#587c0c",
+            "minimapGutter.deletedBackground": "#94151b",
+            "minimapGutter.modifiedBackground": "#0c7d9d",
+            "minimapSlider.activeBackground": "#bfbfbf33",
+            "minimapSlider.background": "#79797933",
+            "minimapSlider.hoverBackground": "#64646459",
+            "editorBracketMatch.border": "#888888",
+            "editorLineNumber.foreground": "#4e4e4ea1",
+            "editorLineNumber.activeForeground": "#929292",
+            "editorLineNumber.activeForeground": "#0c7d9d",
+            "editorBracketHighlight.foreground1": "#ffd780",
+            "editorBracketHighlight.foreground2": "#da70d686",
+            "editorBracketHighlight.foreground3": "#179f80",
+            "editorBracketHighlight.foreground4": "#ffffff80",
+            "terminal.ansiCyan": "#11a8cd",
+            "terminal.ansiGreen": "#6a9955",
+            "terminal.ansiMagenta": "#C586C0",
+            "terminal.ansiRed": "#cd3131",
+            "terminal.ansiWhite": "#e5e5e5",
+            "terminal.ansiYellow": "#CE9178",
+            "terminal.background": "#1E1E1E",
+            "terminal.foreground": "#D4D4D4",
+            "list.hoverBackground": "#ff00ff18",
+            "peekView.border": "#ff00ff",
+            "tab.lastPinnedBorder": "#2472c8",
+            "terminal.ansiBlack": "#000000",
+            "terminal.ansiBlue": "#2472c8",
+            "terminal.ansiBrightBlack": "#666666",
+            "terminal.ansiBrightBlue": "#569cd6",
+            "terminal.ansiBrightCyan": "#9cdcfe",
+            "terminal.ansiBrightGreen": "#b5cea8",
+            "terminal.ansiBrightMagenta": "#d38bcd",
+            "terminal.ansiBrightRed": "#f14c4c",
+            "terminal.ansiBrightWhite": "#e5e5e5",
+            "terminal.ansiBrightYellow": "#ecec6a",
+            "editor.lineHighlightBackground": "#1073cf2d",
+            "editor.lineHighlightBorder": "#9fced11f",
+            "testing.message.error.decorationForeground": "#ff646440",
+            "testing.message.error.lineBackground": "#e4545405",
+            "testing.peekBorder": "#F14C4C",
+            "testing.peekHeaderBackground": "#F14C4C1a",
+            "testing.iconFailed": "#cd3131",
+            "testing.iconPassed": "#6a9955",
+            "testing.iconQueued": "#CCA700",
+            "testing.iconSkipped": "#ff00ff",
+            "testing.iconErrored": "#bb600c",
+            "testing.iconUnset": "#848484"
+        },
+        "terminal.integrated.drawBoldTextInBrightColors": true,
+    }
+]
