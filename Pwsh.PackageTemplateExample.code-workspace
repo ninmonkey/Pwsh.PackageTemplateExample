@@ -4,6 +4,24 @@
             "path": "."
         }
     ],
+    "launch": {
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "name": "run harness📌",
+                "type": "PowerShell",
+                "request": "launch",
+                "script": "${workspaceFolder}/debug_harness.ps1",
+                "cwd": "${workspaceFolder}",
+                "presentation": {
+                    "hidden": false,
+                    "group": "aaa",
+                    "order": 1
+                }
+            },
+        ],
+        "compounds": []
+    },
     "settings": {
         "files.exclude": {
             "**/.git": true,
@@ -393,4 +411,4 @@
         },
         "terminal.integrated.drawBoldTextInBrightColors": true,
     }
-]
+}
