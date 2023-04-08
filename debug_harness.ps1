@@ -3,20 +3,32 @@ $Error.Count | Join-String -f 'had {0} errors'
 $Error.Clear()
 # remove-module Ninmonkey.Console
 $PSStyle.OutputRendering = 'Ansi' # 'Ansi' | 'Host' | 'NoOutput' | 'PlainText'
+$ModuleName = 'Pwsh.PackageTemplate'
 $Harness = @{
     SourcePath = Get-Item (Join-Path $PSScriptRoot 'Source')
-    OutputPath = Get-Item (Join-Path $PSScriptRoot 'Output')
+    OutputPath = Get-Item (Join-Path $PSScriptRoot 'Build')
     ImportMode = 'SourcePath' # [ SourcePath | OutputPath ]
 }
 # $Harness.ImportMode = 'OutputPath'
 $Harness.ImportMode = 'SourcePath'
-$Harness.CurImportFullpath = (Join-Path $Harness.($Harness.ImportMode) 'Pwsh.PackageTemplateExample')
-$harness | ft -auto
+
+if ($Harness.ImportMode -eq 'Build') {
+    '::always build (because we are in build mode)' | Write-Warning -wa 'Continue'
+    Push-Location -stack 'harness' $Harness.SourcePath
+    build
+    Pop-Location -stack 'harness'
+}
+
+
+# $Harness.CurImportFullpath = (Join-Path $Harness.($Harness.ImportMode) 'Pwsh.PackageTemplateExample')
+$harness | Format-Table -auto
+
+Get-Command -m $ModuleName | Format-Table
 
 return
 
 
-Remove-Module 'Pwsh.PackageTemplate' -ea ignore
+Remove-Module $ModuleName -ea ignore
 
 Push-Location -StackName 'harness' -Path $Harness.SourcePath
 Import-Module $Harness.CurImportFullpath -Force -Verbose -PassThru
@@ -45,7 +57,7 @@ Pop-Location -StackName 'harness'
 
 
 # 'see also: "https://github.com/PoshCode/Pansies/blob/main/Source/Private/_init.ps1"'
-Get-Command -m Pwsh.PackageTemplate | Sort-Object Verb, Name | Format-Table Verb, Name -AutoSize
+Get-Command -m $ModuleName | Sort-Object Verb, Name | Format-Table Verb, Name -AutoSize
 
 Hr
 
@@ -55,13 +67,13 @@ $error.Count
 $error
 # err -clear
 
-Get-Command -m Pwsh.PackageTemplate
+Get-Command -m $ModuleName
 | Sort-Object CommandType, Name
 | Format-Table Name -GroupBy CommandType
 
 # 'see also: "https://github.com/PoshCode/Pansies/blob/main/Source/Private/_init.ps1"'
-Get-Command -m Pwsh.PackageTemplate | Sort-Object Verb, Name | Format-Table Verb, Name -AutoSize
+Get-Command -m $ModuleName | Sort-Object Verb, Name | Format-Table Verb, Name -AutoSize
 
-hr
+Hr
 
-get-module importexcel | Tablify.ModuleInfo
+Get-Module importexcel | Tablify.ModuleInfo
